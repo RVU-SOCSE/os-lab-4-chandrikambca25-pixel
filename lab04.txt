@@ -1,0 +1,62 @@
+echo "----------------FILE OPERATIONS-----------------"
+echo "1. Create file"
+echo "2. Copy file"
+echo "3. Move file"
+echo "4. Delete file"
+
+read -p "Enter your choice:" choice
+
+case $choice in
+
+1)
+read -p " Enter filename to create: " file
+
+if [ -f "$file" ]; then
+    echo "Enter File already exists!"
+else
+read -p "Enter content: " content
+echo "$content">"$file"
+echo "File '$file' created successfully"
+fi
+;;
+
+2)
+read -p "Enter source filename:" source
+read -p "Enter destination filename:" dest
+
+if [ -f "$source" ]; then
+cp "$source" "$dest"
+echo "File copied succesfully."
+else 
+echo "Error: Source file does not exist"
+fi
+;;
+
+3)
+read -p "Enter Filename to move:" source
+read -p "Enter new filename:" dest
+
+if [ -f "$source" ]; then
+mv "$source" "$dest"
+echo "File moved successfully"
+else
+echo "Error:file does not exist!"
+fi
+;;
+
+4)
+read -p "Enter filename to delete:" ABC
+
+if [ -f "$ABC" ]; then
+rm "$ABC"
+echo "File deleted successfully"
+else
+echo "Error file does not exists!"
+fi
+;;
+
+*)
+echo "Invalid choice"
+;;
+
+esac 
